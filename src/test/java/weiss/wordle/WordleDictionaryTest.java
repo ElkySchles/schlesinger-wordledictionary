@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WordleDictionaryTest {
     @Test
-    public void getDefinition() throws FileNotFoundException {
+   public void getDefinition() throws FileNotFoundException {
 
         WordleDictionary wordle = new WordleDictionary();
 
-        String actual = wordle.getDefinition("AA");
+        String actual = wordle.getDefinition("formatting");
 
-        assertEquals("rough, cindery lava [n -S]", actual);
+        assertEquals("<format=v> [v]", actual);
 
     }
     @Test
@@ -27,5 +27,7 @@ class WordleDictionaryTest {
         assertEquals(167964, total);
 
     }
+
+
 
 }
