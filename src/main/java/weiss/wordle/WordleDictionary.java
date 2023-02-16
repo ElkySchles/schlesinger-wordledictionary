@@ -22,17 +22,14 @@ public class WordleDictionary {
     }
 
 
-    //getDefiniton takes in a word and returns the definition
+    //GetDefiniton takes in a word and returns the definition
     public String getDefinition(String word) {
-        String[] dictLine;
-
 
         for (int i = 0; i < dictionary.size(); i++) {
 
-            dictLine = dictionary.get(i).split(" ", 2);
+            String[] dictLine = dictionary.get(i).split(" ", 2);
             if (word.equalsIgnoreCase((dictLine[0]))) {
-                String definition = dictLine[1];
-                return definition;
+                return dictLine[1];
             }
         }
         return null;
