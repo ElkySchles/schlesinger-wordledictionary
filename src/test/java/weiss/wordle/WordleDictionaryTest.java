@@ -12,9 +12,9 @@ class WordleDictionaryTest {
 
         WordleDictionary wordle = new WordleDictionary();
 
-        String actual = wordle.getDefinition("formatting");
+        String actual = wordle.getDefinition("AE");
 
-        assertEquals("<format=v> [v]", actual);
+        assertEquals("one [adj]", actual);
 
     }
     @Test
@@ -25,6 +25,16 @@ class WordleDictionaryTest {
         int total = wordle.getList().size();
 
         assertEquals(167964, total);
+
+    }
+    @Test
+    public void guess() throws FileNotFoundException {
+
+        WordleGame game = new WordleGame();
+
+        CharResult[] results = game.guess(game.getCorrectWord());
+
+        assertArrayEquals(new String[]{"correct", "correct", "correct", "correct", "correct"}, results);
 
     }
 

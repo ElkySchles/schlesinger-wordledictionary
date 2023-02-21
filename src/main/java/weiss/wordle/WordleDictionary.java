@@ -12,6 +12,8 @@ public class WordleDictionary {
     //private String definition;
     private final ArrayList<String> justWords = new ArrayList<String>();
 
+
+
     public WordleDictionary() throws FileNotFoundException {
         File file = new File("src/main/java/weiss/wordle/dictionary.txt");
         Scanner sc = new Scanner(file);
@@ -19,6 +21,7 @@ public class WordleDictionary {
         while (sc.hasNextLine()) {
             dictionary.add(sc.nextLine());
         }
+
     }
 
 
@@ -30,6 +33,9 @@ public class WordleDictionary {
             String[] dictLine = dictionary.get(i).split(" ", 2);
             if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length != 1)){
                 return dictLine[1];
+            }
+            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)){
+                return " ";
             }
         }
         return null;
