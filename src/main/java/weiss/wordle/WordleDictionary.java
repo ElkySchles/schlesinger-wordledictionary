@@ -3,7 +3,6 @@ package weiss.wordle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class WordleDictionary {
@@ -11,7 +10,6 @@ public class WordleDictionary {
     private final ArrayList<String> dictionary = new ArrayList<String>();
     //private String definition;
     private final ArrayList<String> justWords = new ArrayList<String>();
-
 
 
     public WordleDictionary() throws FileNotFoundException {
@@ -31,10 +29,10 @@ public class WordleDictionary {
         for (int i = 0; i < dictionary.size(); i++) {
 
             String[] dictLine = dictionary.get(i).split(" ", 2);
-            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length != 1)){
+            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length != 1)) {
                 return dictLine[1];
             }
-            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)){
+            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)) {
                 return " ";
             }
         }
