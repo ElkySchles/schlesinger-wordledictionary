@@ -2,6 +2,7 @@ package weiss.wordle;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class WordleGame {
@@ -17,10 +18,10 @@ public class WordleGame {
         Random random = new Random();
 
         ArrayList<String> fiveLetterWords = new ArrayList<String>();
-
-        for (int i = 0; i < dictionary.getList().size(); i++) {
-            if (dictionary.getList().get(i).length() == 5) {
-                fiveLetterWords.add(dictionary.getList().get(i));
+        List<String> wordList = dictionary.getList();
+        for (int i = 0; i < wordList.size(); i++) {
+            if (wordList.get(i).length() == 5) {
+                fiveLetterWords.add(wordList.get(i));
             }
         }
         int number = random.nextInt(fiveLetterWords.size());
@@ -29,7 +30,7 @@ public class WordleGame {
 
 
     public CharResult[] guess(String guessString) {
-
+        guessString = guessString.toUpperCase();
         CharResult[] results = new CharResult[guessString.length()];
 
         for (int i = 0; i < guessString.length(); i++) {

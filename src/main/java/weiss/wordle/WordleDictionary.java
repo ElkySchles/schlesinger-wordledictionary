@@ -38,9 +38,6 @@ public class WordleDictionary {
                     return "";
                 }
             }
-            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)) {
-                return " ";
-            }
         }
         return null;
     }

@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class WordleGameFrame extends JFrame /*visual window*/ {
     //How do we instatiate a 2-d array?
@@ -39,7 +40,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
             public void actionPerformed(ActionEvent e) {
                 wordGuess = guessWord.getText();
                 CharResult[] answers = game.guess(wordGuess);
-                output.setText(answers.toString());
+                output.setText(Arrays.toString(answers));
 
             }
         });
