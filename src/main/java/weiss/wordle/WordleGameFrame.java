@@ -12,42 +12,38 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
     String wordGuess;
 
 
-    public WordleGameFrame() {
+    public WordleGameFrame(WordleGame game) {
+
+
         //layout manager defines in a panel how the views get laid out
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, 1));
 
+
         JPanel centerPanel = new JPanel();
-        //mainPanel.setLayout(new GridLayout(4, 3));
         centerPanel.setLayout(new GridLayout(3, 0));
 
-        for (int i = 0; i < 1; i++) {
-            //for (int j = 0; j < 3; j++) {
-            JTextField field = new JTextField("Guess Word Here");
-            wordGuess = field.getText();
-            centerPanel.add(field);
-            //}
-        }
-        for (int i = 0; i < 1; i++) {
-            //for (int j = 0; j < 3; j++) {
-            JLabel output = new JLabel();// + "," + j);
-            //utput.getText();
-            centerPanel.add(output);
-            //}
-        }
-        for (int i = 0; i < 1; i++) {
-            //for (int j = 0; j < 3; j++) {
-            JButton button = new JButton("Guess Word");// + "," + j);
-            button.getText();
-            centerPanel.add(button);
-            //}
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("GUESS CLICKED");
-                }
-            });
-        }
+        //This is the guess word box
+        JTextField guessWord = new JTextField("Guess Word Here");
+        centerPanel.add(guessWord);
+
+        //this displays the output
+        JLabel output = new JLabel();
+        centerPanel.add(output);
+
+        //this is the button to guess the word
+        JButton button = new JButton("Guess Word");
+        centerPanel.add(button);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                wordGuess = guessWord.getText();
+                CharResult[] answers = game.guess(wordGuess);
+                output.setText(answers.toString());
+
+            }
+        });
+
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
         /*JButton button = new JButton("Guess");
