@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static weiss.wordle.CharResult.*;
 
+
 class WordleDictionaryTest {
     @Test
     public void getDefinition() throws FileNotFoundException {
@@ -23,6 +24,18 @@ class WordleDictionaryTest {
         assertEquals("one [adj]", actual);
 
     }
+
+    @Test
+    public void getDefinitionOfOther() throws FileNotFoundException {
+
+        WordleDictionary wordle = new WordleDictionary();
+
+        String actual = wordle.getDefinition("ORCHESTRATING");
+
+        assertEquals("", actual);
+
+    }
+
 
     @Test
     public void getList() throws FileNotFoundException {
@@ -68,6 +81,5 @@ class WordleDictionaryTest {
         assertArrayEquals(answer, results);
 
     }
-
 
 }
