@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordleDictionaryTest {
     @Test
-   public void getDefinition() throws FileNotFoundException {
+    public void getDefinition() throws FileNotFoundException {
 
         WordleDictionary wordle = new WordleDictionary();
 
@@ -17,6 +17,18 @@ class WordleDictionaryTest {
         assertEquals("<format=v> [v]", actual);
 
     }
+
+    @Test
+    public void getDefinitionOfOther() throws FileNotFoundException {
+
+        WordleDictionary wordle = new WordleDictionary();
+
+        String actual = wordle.getDefinition("ORCHESTRATING");
+
+        assertEquals("", actual);
+
+    }
+
     @Test
     public void getList() throws FileNotFoundException {
 
@@ -27,7 +39,6 @@ class WordleDictionaryTest {
         assertEquals(167964, total);
 
     }
-
 
 
 }

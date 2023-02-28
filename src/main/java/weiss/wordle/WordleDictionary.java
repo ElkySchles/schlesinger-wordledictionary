@@ -31,7 +31,7 @@ public class WordleDictionary {
                 return dictLine[1];
             }
             if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)) {
-                return " ";
+                return "";
             }
         }
         return null;
