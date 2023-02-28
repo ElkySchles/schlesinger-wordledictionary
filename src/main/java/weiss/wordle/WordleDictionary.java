@@ -30,11 +30,8 @@ public class WordleDictionary {
             if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length != 1)) {
                 return dictLine[1];
             }
-            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length == 1)) {
-                return "";
-            }
         }
-        return null;
+        return "";
     }
 
     //GetList returns only the words from the dictionary
