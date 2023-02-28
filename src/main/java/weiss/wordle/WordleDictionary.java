@@ -27,11 +27,15 @@ public class WordleDictionary {
         for (int i = 0; i < dictionary.size(); i++) {
 
             String[] dictLine = dictionary.get(i).split(" ", 2);
-            if (word.equalsIgnoreCase((dictLine[0])) && (dictLine.length != 1)) {
-                return dictLine[1];
+            if (word.equalsIgnoreCase((dictLine[0]))) {
+                if (dictLine.length != 1) {
+                    return dictLine[1];
+                } else {
+                    return "";
+                }
             }
         }
-        return "";
+        return null;
     }
 
     //GetList returns only the words from the dictionary
