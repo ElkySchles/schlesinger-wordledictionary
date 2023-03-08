@@ -36,11 +36,14 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
                 backspace
         );
 
+        setFocusable(true);
+
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 //we only listen to this
                 controller.addLetter(String.valueOf(e.getKeyChar()));
+
             }
 
             @Override
@@ -93,79 +96,64 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
         for (int i = 0; i < keyboard.length - 16; i++) {
             keyboard[i] = new JButton(alphabet[i]);
             southPanel1.add(keyboard[i]);
+            int finalI = i;
+            keyboard[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    controller.addLetter(keyboard[finalI].getText());
+                }
+            });
 
         }
         //sets the second row of the keyboard
         for (int i = 10; i < keyboard.length - 7; i++) {
             keyboard[i] = new JButton(alphabet[i]);
             southPanel2.add(keyboard[i]);
+            int finalI = i;
+            keyboard[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    controller.addLetter(keyboard[finalI].getText());
+                }
+            });
         }
         //sets enter
         JButton enter = new JButton("ENTER");
         southPanel3.add(enter);
+        enter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.enterGuess();
+            }
+        });
 
         //sets the last row of the keyboard
         for (int i = 19; i < keyboard.length; i++) {
             keyboard[i] = new JButton(alphabet[i]);
             southPanel3.add(keyboard[i]);
+            int finalI = i;
+            keyboard[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    controller.addLetter(keyboard[finalI].getText());
+                }
+            });
         }
         //sets the backspace button
         JButton backspace = new JButton("BACKSPACE");
         southPanel3.add(backspace);
+        backspace.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.backspace();
+            }
+        });
 
 
         setContentPane(mainPanel);
-        setSize(600, 1000);
+        setSize(1200, 1000);
         setTitle("Wordle Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
-        for (int i = 0; i < 6; i++) {
-            for (int x = 0; x < keyboard.length; x++) {
-                int finalX = x;
-                keyboard[x].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        controller.addLetter(keyboard[finalX].getText());
-                    }
-                });
-
-            }
-        }
-
-
-
-
-
-                /*centerPanel.setLayout(new GridLayout(3, 0));
-
-                //This is the guess word box
-                JTextField guessWord = new JTextField("Guess Word Here");
-                centerPanel.add(guessWord);
-
-                //this displays the output
-                JLabel output = new JLabel();
-                centerPanel.add(output);
-
-                //this is the button to guess the word
-                JButton button = new JButton("Guess Word");
-                centerPanel.add(button);
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        wordGuess = guessWord.getText();
-                        CharResult[] answers = wordleGame.guess(wordGuess);
-                        output.setText(Arrays.toString(answers));
-
-                    }
-                });
-
-                mainPanel.add(centerPanel, BorderLayout.CENTER);
-
-                /*JButton button = new JButton("Guess");
-                mainPanel.add(button, BorderLayout.SOUTH);
-
-                allows views*/
 
 
     }

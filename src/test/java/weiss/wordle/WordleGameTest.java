@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.doReturn;
@@ -16,7 +17,7 @@ class WordleGameTest {
     public void guess() throws FileNotFoundException {
         //given
         WordleDictionary dictionary = Mockito.mock(WordleDictionary.class);
-        ArrayList<String> words = new ArrayList<>(List.of("APPLE"));
+        Set<String> words = new HashSet<>(List.of("APPLE"));
         doReturn(words).when(dictionary).getList();
         WordleGame game = new WordleGame(dictionary);
 
@@ -33,7 +34,7 @@ class WordleGameTest {
     public void guessTwo() throws FileNotFoundException {
         //given
         WordleDictionary dictionary = Mockito.mock(WordleDictionary.class);
-        ArrayList<String> words = new ArrayList<>(List.of("APPLE"));
+        Set<String> words = new HashSet<>(List.of("APPLE"));
         doReturn(words).when(dictionary).getList();
         WordleGame game = new WordleGame(dictionary);
 
