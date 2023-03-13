@@ -45,7 +45,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
                 //we only listen to this
 
                 controller.addLetter(String.valueOf(e.getKeyChar()));
-                requestFocus();
+
             }
 
             @Override
@@ -103,6 +103,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     controller.addLetter(keyboard[finalI].getText());
+                    requestFocus();
                 }
             });
 
@@ -116,6 +117,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     controller.addLetter(keyboard[finalI].getText());
+                    requestFocus();
                 }
             });
         }
@@ -126,6 +128,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.enterGuess();
+                requestFocus();
             }
         });
 
@@ -138,6 +141,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     controller.addLetter(keyboard[finalI].getText());
+                    requestFocus();
                 }
             });
         }
@@ -148,6 +152,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.backspace();
+                requestFocus();
             }
         });
 
