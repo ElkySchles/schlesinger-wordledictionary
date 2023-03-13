@@ -47,12 +47,15 @@ public class WordleController {
 
     //when you press the enter button
     public void enterGuess() {
+
         row -= 1;
         for (column = 0; column < 5; column++) {
             theWord.append(labels[row][column].getText());
+            //fix the to upper.
+            //theWord.toString().toUpperCase();
         }
         for (int i = 0; i < dictionary.getList().size(); i++) {
-            if (!dictionary.getList().contains(theWord.toString())) {
+            if (!dictionary.getList().contains(theWord.toString().toUpperCase())) {
                 System.out.println("Not a word, try again");
                 theWord.delete(0, 6);
                 labels[row][column - 1].setText("");

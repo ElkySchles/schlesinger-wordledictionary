@@ -42,9 +42,17 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                
                 //we only listen to this
+                if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+                    controller.enterGuess();
 
-                controller.addLetter(String.valueOf(e.getKeyChar()));
+                } else if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+                    controller.backspace();
+                } else {
+                    controller.addLetter(String.valueOf(e.getKeyChar()));
+                }
+
 
             }
 
@@ -83,7 +91,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
 
         mainPanel.add(centerPanel, BorderLayout.CENTER);
         mainPanel.add(southPanel, BorderLayout.SOUTH);
-        mainPanel.add(southPanel, BorderLayout.SOUTH);
+        //mainPanel.add(southPanel, BorderLayout.SOUTH);
         JButton text = new JButton();
 
         //sets the grid of word guesses
