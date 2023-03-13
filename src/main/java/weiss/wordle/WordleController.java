@@ -36,6 +36,7 @@ public class WordleController {
         if (labels[row][column].getText().equals("")) {
             labels[row][column].setText(letter);
             column++;
+
             if (column == 5) {
                 column = 0;
                 row++;
@@ -51,7 +52,7 @@ public class WordleController {
             theWord.append(labels[row][column].getText());
         }
         for (int i = 0; i < dictionary.justWords.size(); i++) {
-            if (!theWord.toString().equals(dictionary.justWords.get(i))) {
+            if (!dictionary.justWords.toString().contains(theWord)) {
                 System.out.println("Not a word, try again");
                 break;
             }
@@ -60,11 +61,14 @@ public class WordleController {
         CharResult[] answers = wordleGame.guess(theWord.toString());
         for (int i = 0; i < answers.length; i++) {
             if (answers[i].equals(CharResult.Correct)) {
-                labels[row][i].setForeground(Color.GREEN);
+                labels[row][i].setBackground(Color.GREEN);
+                labels[row][i].setOpaque(true);
             } else if (answers[i].equals(CharResult.NotFound)) {
-                labels[row][i].setForeground(Color.GRAY);
+                labels[row][i].setBackground(Color.GRAY);
+                labels[row][i].setOpaque(true);
             } else if (answers[i].equals(CharResult.WrongPlace)) {
-                labels[row][i].setForeground(Color.ORANGE);
+                labels[row][i].setBackground(Color.ORANGE);
+                labels[row][i].setOpaque(true);
             }
         }
         theWord.delete(0, 6);
@@ -76,7 +80,8 @@ public class WordleController {
 
     //when you press backspace
     public void backspace() {
-        row -= 1;
-
+        labels[row][column - 1].setText("");
+        theWord.delete(0, 1);
+        column -= 1;
     }
 }

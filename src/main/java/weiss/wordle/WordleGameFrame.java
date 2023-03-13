@@ -38,12 +38,14 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
 
         setFocusable(true);
 
+
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 //we only listen to this
-                controller.addLetter(String.valueOf(e.getKeyChar()));
 
+                controller.addLetter(String.valueOf(e.getKeyChar()));
+                requestFocus();
             }
 
             @Override
