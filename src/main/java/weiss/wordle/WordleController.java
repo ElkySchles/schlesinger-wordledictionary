@@ -51,9 +51,16 @@ public class WordleController {
         for (column = 0; column < 5; column++) {
             theWord.append(labels[row][column].getText());
         }
-        for (int i = 0; i < dictionary.justWords.size(); i++) {
-            if (!dictionary.justWords.toString().contains(theWord)) {
+        for (int i = 0; i < dictionary.getList().size(); i++) {
+            if (!dictionary.getList().contains(theWord.toString())) {
                 System.out.println("Not a word, try again");
+                theWord.delete(0, 6);
+                labels[row][column - 1].setText("");
+                labels[row][column - 2].setText("");
+                labels[row][column - 3].setText("");
+                labels[row][column - 4].setText("");
+                labels[row][column - 5].setText("");
+                row -= 1;
                 break;
             }
 
@@ -75,6 +82,7 @@ public class WordleController {
         column = 0;
         row++;
 
+
     }
 
 
@@ -83,5 +91,8 @@ public class WordleController {
         labels[row][column - 1].setText("");
         theWord.delete(0, 1);
         column -= 1;
+        if (column == 5) {
+            labels[row][column].setText("");
+        }
     }
 }
