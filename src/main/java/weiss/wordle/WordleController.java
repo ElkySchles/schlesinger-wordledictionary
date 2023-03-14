@@ -94,7 +94,7 @@ public class WordleController {
         theWord.delete(0, 1);
         column -= 1;
         //if (column == 4) {
-        //    labels[row][column + 1].setText("");
+        //    labels[row][column].setText("");
         //}
     }
 }

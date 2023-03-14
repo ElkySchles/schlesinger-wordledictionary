@@ -59,21 +59,22 @@ class WordleControllerTest {
         //Given
         WordleDictionary dictionary = Mockito.mock(WordleDictionary.class);
         Set<String> words = new HashSet<>(List.of("APPLE"));
-        doReturn("A").when(labels[0][0]).getText();
-        doReturn("P").when(labels[0][1]).getText();
-        doReturn("P").when(labels[0][2]).getText();
-        doReturn("L").when(labels[0][3]).getText();
-        doReturn("E").when(labels[0][4]).getText();
+        doReturn(words).when(dictionary).getList();
+        //doReturn("").when(dictionary).getList();
+        CharResult[] answers = {CharResult.Correct, CharResult.Correct, CharResult.Correct, CharResult.Correct, CharResult.Correct};
+        doReturn(answers).when(wordleGame).guess("APPLE");
 
         //when
-        //CharResult[] answers = wordleGame.guess("APPLE");
+
         controller.enterGuess();
+
         //then
         Mockito.verify(labels[0][0]).setBackground(Color.GREEN);
         Mockito.verify(labels[0][1]).setBackground(Color.GREEN);
         Mockito.verify(labels[0][2]).setBackground(Color.GREEN);
         Mockito.verify(labels[0][3]).setBackground(Color.GREEN);
         Mockito.verify(labels[0][4]).setBackground(Color.GREEN);
+
 
     }
 
