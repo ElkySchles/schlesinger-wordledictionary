@@ -41,8 +41,8 @@ public class WordleController {
                 column = 0;
                 row++;
             }
-
         }
+
     }
 
     //when you press the enter button

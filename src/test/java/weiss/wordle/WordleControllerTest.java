@@ -10,9 +10,9 @@ import static org.mockito.Mockito.mock;
 
 class WordleControllerTest {
 
-    WordleGame wordleGame = mock(WordleGame.class);
-    WordleDictionary dictionary = mock(WordleDictionary.class);
-    JLabel labels[][] = new JLabel[][]{
+    private final WordleGame wordleGame = mock(WordleGame.class);
+    private final WordleDictionary dictionary = mock(WordleDictionary.class);
+    private final JLabel labels[][] = new JLabel[][]{
             {mock(), mock(), mock(), mock(), mock()},
             {mock(), mock(), mock(), mock(), mock()},
             {mock(), mock(), mock(), mock(), mock()},
@@ -20,22 +20,23 @@ class WordleControllerTest {
             {mock(), mock(), mock(), mock(), mock()},
             {mock(), mock(), mock(), mock(), mock()},
     };
-    JButton keyboard[] = new JButton[]{mock()};
-    JButton enter = mock();
-    JButton backspace = mock();
+    private final JButton keyboard[] = new JButton[]{mock()};
+    private final JButton enter = mock();
+    private final JButton backspace = mock();
+    private final WordleController controller = new WordleController(
+            wordleGame,
+            dictionary,
+            labels,
+            keyboard,
+            enter,
+            backspace
+    );
 
     @Test
     void addLetter() {
 
         //given
-        WordleController controller = new WordleController(
-                wordleGame,
-                dictionary,
-                labels,
-                keyboard,
-                enter,
-                backspace
-        );
+
         doReturn("").when(labels[0][0]).getText();
         doReturn("").when(labels[0][1]).getText();
         doReturn("").when(labels[0][2]).getText();
@@ -47,6 +48,11 @@ class WordleControllerTest {
         Mockito.verify(labels[0][0]).setText("A");
         Mockito.verify(labels[0][1]).setText("B");
         Mockito.verify(labels[0][2]).setText("C");
+    }
+
+    @Test
+    void enterGuess() {
+
     }
 
 
