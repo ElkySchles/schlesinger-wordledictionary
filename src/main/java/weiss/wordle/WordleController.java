@@ -54,18 +54,17 @@ public class WordleController {
             //fix the to upper.
             //theWord.toString().toUpperCase();
         }
-        for (int i = 0; i < dictionary.getList().size(); i++) {
-            if (!dictionary.getList().contains(theWord.toString().toUpperCase())) {
-                System.out.println("Not a word, try again");
-                theWord.delete(0, 6);
-                labels[row][column - 1].setText("");
-                labels[row][column - 2].setText("");
-                labels[row][column - 3].setText("");
-                labels[row][column - 4].setText("");
-                labels[row][column - 5].setText("");
-                row -= 1;
-                break;
-            }
+
+        if (!dictionary.getList().contains(theWord.toString().toUpperCase())) {
+            System.out.println("Not a word, try again");
+            theWord.delete(0, 6);
+            labels[row][column - 1].setText("");
+            labels[row][column - 2].setText("");
+            labels[row][column - 3].setText("");
+            labels[row][column - 4].setText("");
+            labels[row][column - 5].setText("");
+            row -= 1;
+            return;
 
         }
         CharResult[] answers = wordleGame.guess(theWord.toString());
@@ -94,8 +93,8 @@ public class WordleController {
         labels[row][column - 1].setText("");
         theWord.delete(0, 1);
         column -= 1;
-        if (column == 5) {
-            labels[row][column].setText("");
-        }
+        //if (column == 4) {
+        //    labels[row][column + 1].setText("");
+        //}
     }
 }
