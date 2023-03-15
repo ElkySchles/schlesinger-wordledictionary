@@ -60,12 +60,21 @@ class WordleControllerTest {
         WordleDictionary dictionary = Mockito.mock(WordleDictionary.class);
         Set<String> words = new HashSet<>(List.of("APPLE"));
         doReturn(words).when(dictionary).getList();
-        //doReturn("").when(dictionary).getList();
-        CharResult[] answers = {CharResult.Correct, CharResult.Correct, CharResult.Correct, CharResult.Correct, CharResult.Correct};
+        controller.row = 1;
+
+        doReturn("A").when(labels[0][0]).getText();
+        doReturn("P").when(labels[0][1]).getText();
+        doReturn("P").when(labels[0][2]).getText();
+        doReturn("L").when(labels[0][3]).getText();
+        doReturn("E").when(labels[0][4]).getText();
+        CharResult[] answers =
+                {CharResult.Correct,
+                        CharResult.Correct, CharResult.Correct,
+                        CharResult.Correct, CharResult.Correct};
         doReturn(answers).when(wordleGame).guess("APPLE");
 
-        //when
 
+        //when
         controller.enterGuess();
 
         //then
@@ -82,11 +91,14 @@ class WordleControllerTest {
     void backspace() {
 
         //given
+        controller.column = 3;
 
         doReturn("A").when(labels[0][0]).getText();
         doReturn("B").when(labels[0][1]).getText();
         doReturn("C").when(labels[0][2]).getText();
         //when
+        controller.backspace();
+        controller.backspace();
         controller.backspace();
 
 

@@ -48,11 +48,9 @@ public class WordleController {
     //when you press the enter button
     public void enterGuess() {
 
-        row -= 1;
+        row--;
         for (column = 0; column < 5; column++) {
             theWord.append(labels[row][column].getText());
-            //fix the to upper.
-            //theWord.toString().toUpperCase();
         }
 
         if (!dictionary.getList().contains(theWord.toString().toUpperCase())) {
@@ -63,7 +61,7 @@ public class WordleController {
             labels[row][column - 3].setText("");
             labels[row][column - 4].setText("");
             labels[row][column - 5].setText("");
-            row -= 1;
+            row--;
             return;
 
         }
@@ -91,8 +89,7 @@ public class WordleController {
     //when you press backspace
     public void backspace() {
         labels[row][column - 1].setText("");
-        theWord.delete(0, 1);
-        column -= 1;
+        column--;
         //if (column == 4) {
         //    labels[row][column].setText("");
         //}

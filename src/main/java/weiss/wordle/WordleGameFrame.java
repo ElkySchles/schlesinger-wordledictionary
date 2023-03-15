@@ -42,7 +42,7 @@ public class WordleGameFrame extends JFrame /*visual window*/ {
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                
+
                 //we only listen to this
                 if (e.getKeyChar() == KeyEvent.VK_ENTER) {
                     controller.enterGuess();
