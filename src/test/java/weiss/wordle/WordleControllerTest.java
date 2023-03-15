@@ -73,7 +73,6 @@ class WordleControllerTest {
                         CharResult.Correct, CharResult.Correct};
         doReturn(answers).when(wordleGame).guess("APPLE");
 
-
         //when
         controller.enterGuess();
 

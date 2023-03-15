@@ -41,7 +41,9 @@ public class WordleController {
                 column = 0;
                 row++;
             }
+
         }
+
 
     }
 
@@ -61,10 +63,11 @@ public class WordleController {
             labels[row][column - 3].setText("");
             labels[row][column - 4].setText("");
             labels[row][column - 5].setText("");
-            row--;
+            column = 0;
             return;
 
         }
+
         CharResult[] answers = wordleGame.guess(theWord.toString());
         for (int i = 0; i < answers.length; i++) {
             if (answers[i].equals(CharResult.Correct)) {
@@ -90,8 +93,6 @@ public class WordleController {
     public void backspace() {
         labels[row][column - 1].setText("");
         column--;
-        //if (column == 4) {
-        //    labels[row][column].setText("");
-        //}
+
     }
 }
