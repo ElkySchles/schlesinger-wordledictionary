@@ -46,4 +46,5 @@ public class WordleGame {
 
         return results;
     }
+
 }

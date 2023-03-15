@@ -57,10 +57,10 @@ class WordleControllerTest {
     @Test
     void enterGuess() {
         //Given
-        WordleDictionary dictionary = Mockito.mock(WordleDictionary.class);
         Set<String> words = new HashSet<>(List.of("APPLE"));
         doReturn(words).when(dictionary).getList();
         controller.row = 1;
+
 
         doReturn("A").when(labels[0][0]).getText();
         doReturn("P").when(labels[0][1]).getText();

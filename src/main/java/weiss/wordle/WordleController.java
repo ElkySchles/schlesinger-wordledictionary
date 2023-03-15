@@ -8,7 +8,7 @@ public class WordleController {
     int row = 0;
     int column = 0;
 
-    StringBuilder theWord = new StringBuilder();
+
     private WordleGame wordleGame;
     private WordleDictionary dictionary;
     private JLabel labels[][];
@@ -49,7 +49,7 @@ public class WordleController {
 
     //when you press the enter button
     public void enterGuess() {
-
+        StringBuilder theWord = new StringBuilder();
         row--;
         for (column = 0; column < 5; column++) {
             theWord.append(labels[row][column].getText());
