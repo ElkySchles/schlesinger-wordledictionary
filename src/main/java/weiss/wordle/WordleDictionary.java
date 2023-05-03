@@ -41,10 +41,8 @@ public class WordleDictionary {
     //GetDefiniton takes in a word and returns the definition
     public String getDefinition(String word) {
         word = word.toUpperCase();
-        for (int i = 0; i < map.size(); i++) {
-            if (map.containsKey(word)) {
-                return map.get(word);
-            }
+        if (map.containsKey(word)) {
+            return map.get(word);
         }
         return null;
     }

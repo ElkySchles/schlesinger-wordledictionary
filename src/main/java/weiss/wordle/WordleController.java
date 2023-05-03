@@ -33,7 +33,7 @@ public class WordleController {
     //Called when you type the letter in or press a letter on the onscreen keyboard
     public void addLetter(String letter) {
 
-        if (labels[row][column].getText().equals("")) {
+        if (labels[row][column].getText().isEmpty()) {
             labels[row][column].setText(letter);
             column++;
 
@@ -55,7 +55,8 @@ public class WordleController {
             theWord.append(labels[row][column].getText());
         }
 
-        if (!dictionary.getList().contains(theWord.toString().toUpperCase())) {
+        //if (!dictionary.getList().contains(theWord.toString().toUpperCase()))
+        if (dictionary.getDefinition(theWord.toString()) == null) {
             System.out.println("Not a word, try again");
             theWord.delete(0, 6);
             labels[row][column - 1].setText("");
