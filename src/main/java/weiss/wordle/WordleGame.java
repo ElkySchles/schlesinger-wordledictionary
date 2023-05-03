@@ -2,8 +2,8 @@ package weiss.wordle;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class WordleGame {
 
@@ -18,14 +18,15 @@ public class WordleGame {
         Random random = new Random();
 
         ArrayList<String> fiveLetterWords = new ArrayList<String>();
-        List<String> wordList = dictionary.getList();
-        for (int i = 0; i < wordList.size(); i++) {
-            if (wordList.get(i).length() == 5) {
-                fiveLetterWords.add(wordList.get(i));
+        Set<String> wordList = dictionary.getList();
+        for (String word : wordList) {
+            if (word.length() == 5) {
+                fiveLetterWords.add(word);
             }
         }
         int number = random.nextInt(fiveLetterWords.size());
         correctWord = fiveLetterWords.get(number);
+        System.out.println(correctWord);
     }
 
 
@@ -45,4 +46,5 @@ public class WordleGame {
 
         return results;
     }
+
 }
